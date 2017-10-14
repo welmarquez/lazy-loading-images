@@ -1,0 +1,56 @@
+@font-face {
+    font-family: Ubuntu Light;
+    src: url("./font/Ubuntu-L.ttf") format("opentype");
+}
+
+html, body, div, p, h1, h2, img {
+    box-sizing: border-box;
+    font-family: "Ubuntu Light", sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    margin: 30px auto;
+    width: 100%;
+}
+
+h1 {
+    margin: 0 20px;
+}
+
+.image-box {
+    display: block;
+    margin: 50px 20px;
+    width: auto;
+}
+
+.image-box h2 {
+    margin: 20px 0;
+}
+
+.image-box p {
+    margin: 20px 0;
+}
+
+.image-box img {
+    width: 100%;
+}
+
+.image-box img.loaded {
+    animation: fadein 2500ms;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+@media screen and (min-width: 641px) {
+    .main {
+        width: 640px;
+    }
+}
+
