@@ -1,3 +1,8 @@
+/**
+ * 
+ * Implementation of lazy loading images.
+ *
+ */
 (function (window) {
     "use strict";
 
@@ -35,12 +40,17 @@
          * Event handler for the window scroll event.
          */
         const lazy = e => {
-            images.forEach(image => {
-                if (inview(image) && image.dataset.src) {
-                    load(image);
-                    image.resolve(image);
-                }
-            });
+            // Make this array traversal non-blocking
+            // as this callback will be called a lot
+            // if not all of the images are loaded.
+            setTimeout(function () {
+                images.forEach(image => {
+                    if (inview(image) && image.dataset.src) {
+                        load(image);
+                        image.resolve(image);
+                    }
+                });
+            }, 0);
         };
 
 
@@ -86,7 +96,6 @@
                 image.resolve(image);
             }
         });
-
 
         window.addEventListener("scroll", lazy);
 
